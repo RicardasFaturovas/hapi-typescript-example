@@ -2,10 +2,12 @@ import * as Mongoose from "mongoose";
 import { IDataConfiguration } from "./configurations";
 import { IUser, UserModel } from "./users/user";
 import { ITask, TaskModel } from "./tasks/task";
+import {ProjectModel, IProject} from "./projects/project";
 
 export interface IDatabase {
     userModel: Mongoose.Model<IUser>;
     taskModel: Mongoose.Model<ITask>;
+    projectModel: Mongoose.Model<IProject>;
 }
 
 export function init(config: IDataConfiguration): IDatabase {
@@ -24,6 +26,7 @@ export function init(config: IDataConfiguration): IDatabase {
     });
 
     return {
+        projectModel: ProjectModel,
         taskModel: TaskModel,
         userModel: UserModel
     };

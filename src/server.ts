@@ -3,6 +3,7 @@ import { IPlugin } from "./plugins/interfaces";
 import { IServerConfigurations } from "./configurations";
 import * as Tasks from "./tasks";
 import * as Users from "./users";
+import * as Projects from "./projects";
 import { IDatabase } from "./database";
 
 
@@ -33,6 +34,7 @@ export function init(configs: IServerConfigurations, database: IDatabase) {
     //Init Features
     Tasks.init(server, configs, database);
     Users.init(server, configs, database);
+    Projects.init(server, configs, database);
 
     return server;
 };
