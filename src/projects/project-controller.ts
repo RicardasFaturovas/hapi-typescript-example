@@ -31,7 +31,10 @@ export default class ProjectController {
   public getProjectById(request: Hapi.Request, reply: Hapi.IReply) {
     let id = request.params["id"];
 
-    this.database.projectModel.findOne({ _id: id }).populate('users', 'email name').populate('tasks').then((project: IProject) => {
+    this.database.projectModel.findOne({ _id: id })
+      .populate('users', 'email name')
+      .populate('tasks')
+      .then((project: IProject) => {
       if (project) {
         reply(project);
       } else {
