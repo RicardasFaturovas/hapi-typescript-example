@@ -50,6 +50,7 @@ export default function (server: Hapi.Server, configs: IServerConfigurations, da
             description: 'Get all tasks.',
             validate: {
                 query: {
+                    description: Joi.string().default(''),
                     top: Joi.number().default(5),
                     skip: Joi.number().default(0)
                 },

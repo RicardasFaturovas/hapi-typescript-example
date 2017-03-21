@@ -48,8 +48,9 @@ export default class ProjectController {
   public getProjects(request: Hapi.Request, reply: Hapi.IReply) {
     let top = request.query.top;
     let skip = request.query.skip;
+    let description = request.query.description;
 
-    this.database.projectModel.find({ })
+    this.database.projectModel.find({ description: { "$regex": `^${description.toLowerCase()}`, "$options":1} })
       .populate('users', 'email name')
       .populate('tasks', 'name description')
       .skip(skip).limit(top)

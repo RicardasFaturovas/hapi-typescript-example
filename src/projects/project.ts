@@ -13,7 +13,7 @@ export const ProjectSchema = new Mongoose.Schema({
   name: { type: String, unique:true, required: true },
   users: [{type: Mongoose.Schema.Types.ObjectId, ref: 'User'}],
   tasks: [{type: Mongoose.Schema.Types.ObjectId, ref: 'Task'}],
-  description: String,
+  description: { type: String, required: false },
 }, {
   timestamps: true
 });
