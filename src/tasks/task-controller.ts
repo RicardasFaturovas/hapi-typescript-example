@@ -73,24 +73,6 @@ export default class TaskController {
         });
     }
 
-  public getTaskByDescription(request: Hapi.Request, reply: Hapi.IReply) {
-    let description = request.params["description"];
-    let top = request.query.top;
-    let skip = request.query.skip;
-
-    this.database.taskModel.find({ description: { "$regex": `^${description.toLowerCase()}`, "$options":1} })
-      .skip(skip).limit(top)
-      .then((task: Array<ITask>) => {
-        if (task) {
-          reply(task);
-        } else {
-          reply(Boom.notFound());
-        }
-      }).catch((error) => {
-      reply(Boom.badImplementation(error));
-    });
-  }
-
     public getTasks(request: Hapi.Request, reply: Hapi.IReply) {
         let userId = request.auth.credentials.id;
         let top = request.query.top;

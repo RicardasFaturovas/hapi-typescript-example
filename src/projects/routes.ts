@@ -51,6 +51,7 @@ export default function (server: Hapi.Server, configs: IServerConfigurations, da
       validate: {
         query: {
           description: Joi.string().default(''),
+          name: Joi.string().default(''),
           top: Joi.number().default(5),
           skip: Joi.number().default(0)
         },
