@@ -53,7 +53,7 @@ export default class ProjectController {
 
     this.database.projectModel.find({
       description: { "$regex": `^${description.toLowerCase()}`, "$options":1},
-      name: { "$regex": new RegExp("^" + name.toLowerCase(), "i")
+      name: { "$regex": new RegExp("^" + name.toLowerCase(), "i") }
     })
       .populate('users', 'email name')
       .populate('tasks', 'name description')
